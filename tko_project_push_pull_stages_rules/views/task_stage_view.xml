@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_task_type_form_inherit" model="ir.ui.view">
+            <field name="name">project.task.type</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <field name="description" position="after">
+                    <notebook string="Pull/Push Rules" col="4" colspan="4">
+                            <page string="Pull Rules" name="pull_rules">
+                                <group string="Pull Rule Warning Message">
+                                    <field name="pull_rule_warning_message" nolabel="1"/>
+                                </group>
+
+                                <group string="Pull Rule">
+                                    <group>
+                                        <field name="pull_rule_filter_id" options="{'no_create':True}" domain="[('model_id','=','project.task')]"/>
+                                    </group>
+                                    <field name="pull_rule" colspan="4" nolabel="1"
+                                           placeholder=" Available Variables : user, task_id, time
+                                                     Eg:['|',('user.partner_id','=',task_id.project_id.partner_id),('task_id.partner_id.function','=','CEO')] "/>
+
+                                </group>
+                                <group string="Pull Group">
+                                    <field name="pull_group_ids" colspan="4" nolabel="1" options="{'no_create':True}"/>
+                                </group>
+                                <group string="Pull Server Action">
+                                    <field name="pull_server_action_id" colspan="4" nolabel="1" options="{'no_create':True}"/>
+                                </group>
+                            </page>
+                            <page string="Push Rules" name="push_rules">
+                                <group string="Push Rule Warning Message">
+                                    <field name="push_rule_warning_message" nolabel="1"/>
+                                </group>
+
+                                <group string="Push Rule">
+                                    <group>
+                                        <field name="push_rule_filter_id" options="{'no_create':True}" domain="[('model_id','=','project.task')]"/>
+                                    </group>
+                                    <field name="push_rule" colspan="4" nolabel="1"
+                                           placeholder=" Available Variables : user, task_id, time
+                                                     Eg:['|',('user.partner_id','in',task_id.project_id.message_follower_ids),('task_id.partner_id.function','=','CEO')] "/>
+
+                                </group>
+
+                                <group string="Push Group">
+                                    <field name="push_group_ids" colspan="4" nolabel="1" options="{'no_create':True}"/>
+                                </group>
+                                <group string="Push Server Action">
+                                    <field name="push_server_action_id" colspan="4" nolabel="1" options="{'no_create':True}"/>
+                                </group>
+                            </page>
+                    </notebook>
+
+
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

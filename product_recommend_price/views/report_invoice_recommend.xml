@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_recommend_price_layouted" inherit_id="sale.report_invoice_layouted">
+            <xpath expr="//t/t/div/t/table[@class='table table-condensed']/thead/tr/th[3]" position="after">
+                <t t-if="doc.company_id.recommend_bool">
+                    <th class="text-right">Recommend Price</th>
+                </t>
+            </xpath>
+            <xpath expr="//t/t/div/t/table[@class='table table-condensed']/tbody/t/t/tr/td[3]" position="after">
+                <t t-if="doc.company_id.recommend_bool">
+                    <td class="text-right">
+                        <span t-field="l.recommend_price"/>
+                    </td>
+                </t>
+            </xpath>
+        </template>
+        <template id="report_invoice_recommend_price" inherit_id="account.report_invoice_document">
+            <xpath expr="//div/table[@class='table table-condensed']/thead/tr/th[4]" position="after">
+                <t t-if="o.company_id.recommend_bool">
+                    <th class="text-right">Recommend Price</th>
+                </t>
+            </xpath>
+            <xpath expr="//div/table[@class='table table-condensed']/tbody/tr/td[4]" position="after">
+                <t t-if="o.company_id.recommend_bool">
+                    <td class="text-right">
+                        <span t-field="l.recommend_price"/>
+                    </td>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

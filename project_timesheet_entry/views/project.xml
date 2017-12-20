@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="project_task_type_edit_inherit" model="ir.ui.view">
+            <field name="name">project.task.type.form.inherit</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit" />
+            <field name="arch" type="xml">
+                <field name="mail_template_id" position="after">
+                    <field name="visible_ts_btn"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="task_type_tree_inherit" model="ir.ui.view">
+            <field name="name">project.task.type.tree.inherit</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_tree" />
+            <field name="arch" type="xml">
+                <field name="description" position="before">
+                    <field name="visible_ts_btn"/>
+                </field>
+            </field>
+        </record>
+        <!-- Project User / Manager See "Fill up timesheet" button in project's task form view. -->
+        <record id="project_task_worklog_form_view" model="ir.ui.view">
+            <field name="name">project.task.worklog.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <field name="stage_id" position="before">
+                    <button name="%(project_timesheet_entry.project_wizard_action)d" 
+                        string="Fill up timesheet" type="action" class="btn-primary" attrs="{'invisible':[('visible_ts_btn','=', False)]}"/>
+                        <field name="visible_ts_btn" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <!-- Project User / Manager See "Fill up timesheet" button in project's task tree view. -->
+        <record id="view_task__worklog_tree2_inherit" model="ir.ui.view">
+            <field name="name">project.task.worklog.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2" />
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <button name="%(project_timesheet_entry.project_wizard_action)d" 
+                        string="Fill up timesheet" type="action" class="btn-primary" attrs="{'invisible':[('visible_ts_btn','=', False)]}"/>
+                        <field name="visible_ts_btn" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <!-- Project User / Manager See "Fill up timesheet" button in project's issue form view. -->
+        <record id="project_issue_worklog_form_view" model="ir.ui.view">
+            <field name="name">project.issue.worklog.form</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view" />
+            <field name="arch" type="xml">
+                <field name="stage_id" position="before">
+                    <button name="%(project_timesheet_entry.project_issue_wizard_action)d" string="Fill up timesheet" type="action" class="btn-primary" attrs="{'invisible':[('visible_ts_btn','=', False)]}"/>
+                    <field name="visible_ts_btn" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <!-- Project User / Manager See "Fill up timesheet" button in project's issue tree view. -->
+        <record model="ir.ui.view" id="project_issue_worklog_tree_view_inherit">
+            <field name="name">project.issue.worklog.tree</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view" />
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <button name="%(project_timesheet_entry.project_issue_wizard_action)d" string="Fill up timesheet" type="action" class="btn-primary" attrs="{'invisible':[('visible_ts_btn','=', False)]}"/>
+                    <field name="visible_ts_btn" invisible="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

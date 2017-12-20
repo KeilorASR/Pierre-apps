@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_kanban_customer_name" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="customer_name"/>
+                </xpath>
+                <xpath expr="//div[@class='o_primary']" position="inside">
+                    <span class="text-muted small" t-if="record.customer_name.raw_value"><t t-esc="record.customer_name.value"/></span>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter_customer_name" model="ir.ui.view">
+        <field name="name">project.project.select.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="filter_domain" attrs="domain">
+                        ['|', ('name', 'ilike', self), ('partner_id.name', 'ilike', self)]
+                    </attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

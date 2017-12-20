@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_project_task_wizard_form" model="ir.ui.view">
+            <field name="name">Project Task Wizard</field>
+            <field name="model">project.task.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Task Timesheet">
+        		    <group string="Task Timesheet">
+                        <label for="name" />
+                        <div>
+                            <field name="name" required="1"/>
+                        </div>
+                        <label for="duration" />
+                        <div>
+                            <field name="duration" required="1" style="width:10%;" widget="float_time" />
+                        </div>
+                    </group>
+        		    <footer>
+            			<button string="Save Timesheet" name="write_task_log" type="object" class="btn-primary"/>
+            			<button string="Cancel" class="btn-default" special="cancel"/>
+        		    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="project_wizard_action" model="ir.actions.act_window">
+            <field name="name">Save Task Timesheet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task.wizard</field>
+            <field name="view_id" ref="view_project_task_wizard_form"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_project_issue_wizard_form" model="ir.ui.view">
+            <field name="name">Project Issue Wizard</field>
+            <field name="model">project.issue.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Issue Timesheet">
+                    <group string="Issue Timesheet">
+                        <label for="name" />
+                        <div>
+                            <field name="name" required="1"/>
+                        </div>
+                        <label for="duration" />
+                        <div>
+                            <field name="duration" required="1" style="width:10%;" widget="float_time" />
+                        </div>       
+                    </group>
+                    <footer>
+                    <button string="Save Timesheet" name="write_issue_log" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="project_issue_wizard_action" model="ir.actions.act_window">
+            <field name="name">Save Issue Timesheet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.issue.wizard</field>
+            <field name="view_id" ref="view_project_issue_wizard_form"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

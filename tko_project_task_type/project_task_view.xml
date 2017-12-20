@@ -1,0 +1,131 @@
+<openerp>
+    <data>
+
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="after">
+                    <field name="task_type_id" />
+                </xpath> 
+            </field>
+        </record>
+
+        <record id="view_task_form_with_pad" model="ir.ui.view">
+            <field name="name">project.task.form.pad</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="task_type_id" placeholder="task type" required="1" style="width:10%%;" />
+                    <field name="color" invisible="1" />
+                    <field name="type_name" invisible="1" />
+                </xpath> 
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_task_kanban">
+            <field name="name">project.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <t t-if="record.type_name.raw_value">
+                        [
+                        <field name="type_name" />
+                        ]
+                    </t>
+                </xpath> 
+            </field>
+        </record>
+        <!--tree view -->
+        <record id="task_type_tree_view" model="ir.ui.view">
+            <field name="name">Task Type</field>
+            <field name="model">task.type</field>
+            <field name="arch" type="xml">
+                <tree string="Task Type" version="7.0">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <!--form view -->
+        <record id="task_type_form_view" model="ir.ui.view">
+            <field name="model">task.type</field>
+            <field name="arch" type="xml">
+                <form string="Task Type" version="7.0">
+                    <group>
+                        <field name="name" />
+                        <field name="color" />
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- Project Task Kanban View -->
+        <record model="ir.ui.view" id="view_type_kanban">
+            <field name="name">project.task.kanban</field>
+            <field name="model">task.type</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="name">
+                    <field name="name" />
+                    <field name="color" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                                <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                     <span class="oe_e">í</span>
+                                     <ul class="oe_dropdown_menu">
+                                           <t t-if="widget.editable"><li><a type="edit">Edit...</a></li></t>
+                                           <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+                                           <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                      </ul>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <b>
+                                            <field name="name" />
+                                        </b>
+                                    </div>
+                                    <div>
+                                        [
+                                        <field name="color" />
+                                        ]
+                                        <br />
+                                    </div>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="act_project_project_2_project_task_all" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">tree,kanban,form,calendar,gantt,graph</field>
+            <field name="context">{
+                'search_default_project_id': [active_id],
+                'default_project_id': active_id,
+                'active_test': False,
+                'group_by': 'task_type_id',
+            }</field>
+            <field name="search_view_id" ref="view_task_search_form"/>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+        <record id="task_type_action" model="ir.actions.act_window">
+            <field name="name">Task Type</field>
+            <field name="res_model">task.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+        <menuitem id="task_type_menu" action="task_type_action"
+            parent="project.menu_project_config" groups="project.group_project_manager" />
+    </data>
+</openerp>

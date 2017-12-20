@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_supervisor_view_form" model="ir.ui.view">
+        <field name="name">project.task.supervisor.view.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="supervisor"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="search_tasksupervisor" model="ir.ui.view">
+             <field name="name">search.task.supervisor</field>
+                <field name="model">project.task</field>
+                <field name="inherit_id" ref="project.view_task_search_form"/>
+                <field name="arch" type="xml">
+                    <field name="name" position="after">
+                        <filter name="supervisor" string="Supervisor" domain="[('supervisor','=',uid)]"/>
+                    </field>
+                </field>
+    </record>
+</odoo>

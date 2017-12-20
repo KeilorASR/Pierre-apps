@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* tko_project_task_type
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-05 07:49+0000\n"
+"PO-Revision-Date: 2017-01-05 07:49+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_color
+msgid "Color Index"
+msgstr "颜色索引"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_create_uid
+msgid "Created by"
+msgstr "创建者"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: tko_project_task_type
+#: model:ir.ui.view,arch_db:tko_project_task_type.view_type_kanban
+msgid "Delete"
+msgstr "刪除"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: tko_project_task_type
+#: model:ir.ui.view,arch_db:tko_project_task_type.view_type_kanban
+msgid "Edit..."
+msgstr "编辑"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type___last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_write_uid
+msgid "Last Updated by"
+msgstr "最后更新者"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_project_task_type_name_5532
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_name
+msgid "Name"
+msgstr "名称"
+
+#. module: tko_project_task_type
+#: model:ir.actions.act_window,help:tko_project_task_type.act_project_project_2_project_task_all
+msgid "Odoo's project management allows you to manage the pipeline\n"
+"                    of tasks in order to get things done efficiently. You can\n"
+"                    track progress, discuss on tasks, attach documents, etc."
+msgstr "Odoo'的项目管理让您能够管理一系列的任务，提高效率。\n"
+"                    您可以实时了解进度，知道关于任务的讨论和文件等等."
+
+#. module: tko_project_task_type
+#: model:ir.model,name:tko_project_task_type.model_project_task
+#: model:ir.model.fields,field_description:tko_project_task_type.field_task_type_task_id
+msgid "Task"
+msgstr "任务"
+
+#. module: tko_project_task_type
+#: model:ir.actions.act_window,name:tko_project_task_type.task_type_action
+#: model:ir.ui.menu,name:tko_project_task_type.task_type_menu
+#: model:ir.ui.view,arch_db:tko_project_task_type.task_type_form_view
+#: model:ir.ui.view,arch_db:tko_project_task_type.task_type_tree_view
+msgid "Task Type"
+msgstr "任务编类"
+
+#. module: tko_project_task_type
+#: model:ir.actions.act_window,name:tko_project_task_type.act_project_project_2_project_task_all
+msgid "Tasks"
+msgstr "任务"
+
+#. module: tko_project_task_type
+#: model:ir.model.fields,field_description:tko_project_task_type.field_project_task_task_type_id
+msgid "Type"
+msgstr "类型"
+
+#. module: tko_project_task_type
+#: model:ir.ui.view,arch_db:tko_project_task_type.view_task_form_with_pad
+msgid "task type"
+msgstr "任务编类"
+
+#. module: tko_project_task_type
+#: model:ir.model,name:tko_project_task_type.model_task_type
+msgid "task.type"
+msgstr "task.type"
+
